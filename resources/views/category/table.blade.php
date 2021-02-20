@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="../../../public/form.php" type="button" class="btn btn-primary">Add category</a>
+    <a href="/category/create" type="button" class="btn btn-primary">Add category</a>
     <table class="table">
         <thead>
         <tr>
@@ -22,8 +22,8 @@
                 <td>{{$category->slug}}</td>
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
-                <td><a href="../../../public/formEdit.php?id={{$category->id}}" type="button" class="btn btn-primary">Edit</a>
-                </td> <td><a href="../../../public/delete.php?id={{$category->id}}" type="button" class="btn btn-primary">Delete</a>
+                <td><a href="/category/{{$category->id}}/edit" type="button" class="btn btn-primary">Edit</a>
+                </td> <td><a href="/category/{{$category->id}}/destroy" type="button" class="btn btn-primary">Delete</a>
                 </td>
             </tr>
         @empty

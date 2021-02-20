@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="../../../public/tagform.php" type="button" class="btn btn-primary">Add Tag</a>
+    <a href="/tag/create" type="button" class="btn btn-primary">Add Tag</a>
     <table class="table">
         <thead>
         <tr>
@@ -22,8 +22,8 @@
                 <td>{{$tag->slug}}</td>
                 <td>{{$tag->created_at}}</td>
                 <td>{{$tag->updated_at}}</td>
-                <td><a href="../../../public/tagformEdit.php?id={{$tag->id}}" type="button" class="btn btn-primary">Edit</a>
-                </td> <td><a href="../../../public/tagdelete.php?id={{$tag->id}}" type="button" class="btn btn-primary">Delete</a>
+                <td><a href="/tag/{{$tag->id}}/edit" type="button" class="btn btn-primary">Edit</a>
+                </td> <td><a href="/tag/{{$tag->id}}/destroy" type="button" class="btn btn-primary">Delete</a>
                 </td>
             </tr>
         @empty

@@ -2,11 +2,13 @@
 require_once '../vendor/autoload.php';
 require_once '../config/eloquent.php';
 require_once '../config/blade.php';
+require_once '../config/router.php';
 
 /** @var $blade */
-
-$tags = \App\Model\Tag::all();
+$response = $router->dispatch($request);
+echo $response->getContent();
+//$tags = \App\Model\Tag::all();
 
 //compact('categories'); // ['categories' => $categories]
 
-echo $blade->make('tag/table', compact('tags'))->render();
+//echo $blade->make('tag/table', compact('tags'))->render();
