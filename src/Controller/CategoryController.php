@@ -9,7 +9,8 @@ class CategoryController
 {
     public function index()
     {
-        $categories = \App\Model\Category::all();
+        $categories = \App\Model\Category::paginate(3);
+//        $categories = \App\Model\Category::withTrashed()->get();
 
         return view('category/table', compact('categories'));
     }

@@ -9,7 +9,8 @@ class TagController
 {
     public function index()
     {
-        $tags = \App\Model\Tag::all();
+        $tags = \App\Model\Tag::paginate(3);
+  //     $tags = \App\Model\Tag::withTrashed()->get();
 
         return view('tag/table', compact('tags'));
     }

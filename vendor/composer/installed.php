@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '2d1ba10865dc3097f9256f48f8afb9cdc087e992',
+    'reference' => '920f8611cd469e01d44d596ec8c35faeb3cab347',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '2d1ba10865dc3097f9256f48f8afb9cdc087e992',
+      'reference' => '920f8611cd469e01d44d596ec8c35faeb3cab347',
     ),
     'doctrine/inflector' => 
     array (
@@ -46,6 +46,15 @@
       array (
       ),
       'reference' => '0dbf5d78455d4d6a41d186da50adc1122ec066f4',
+    ),
+    'graham-campbell/result-type' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7e279d2cd5d7fbb156ce46daada972355cea27bb',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -128,6 +137,15 @@
       ),
       'reference' => '39d6e9eca58b575016be5d85cc1f223f632c0e95',
     ),
+    'illuminate/pagination' => 
+    array (
+      'pretty_version' => 'v7.30.4',
+      'version' => '7.30.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ba0940dc07dde18249f4f46573969f8d87197a3e',
+    ),
     'illuminate/pipeline' => 
     array (
       'pretty_version' => 'v7.30.4',
@@ -199,6 +217,15 @@
       array (
       ),
       'reference' => '528783b188bdb853eb21239b1722831e0f000a8d',
+    ),
+    'phpoption/phpoption' => 
+    array (
+      'pretty_version' => '1.7.5',
+      'version' => '1.7.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '994ecccd8f3283ecf5ac33254543eb0ac946d525',
     ),
     'psr/container' => 
     array (
@@ -527,6 +554,15 @@
       array (
       ),
       'reference' => '72ca213014a92223a5d18651ce79ef441c12b694',
+    ),
+    'vlucas/phpdotenv' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
     ),
     'voku/portable-ascii' => 
     array (

@@ -12,7 +12,8 @@ class PostController
 {
     public function index()
     {
-        $posts = \App\Model\Post::all();
+        $posts = \App\Model\Post::paginate(3);
+//        $posts = \App\Model\Post::withTrashed()->get();
 
         return view('post/table', compact('posts'));
     }

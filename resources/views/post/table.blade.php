@@ -45,4 +45,29 @@
         @endforelse
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if($posts->currentPage()>=4)
+                <li class="page-item"><a class="page-link" href="/post/list/{{$posts->onFirstPage()}}">1</a></li>
+                @endif
+
+            @if($posts->currentPage()!=1)
+            <li class="page-item"><a class="page-link" href="/post/list/{{$posts->previousPageUrl()}}"> Previous</a></li>
+            @endif
+
+            @foreach($posts->getUrlRange($posts->currentPage()-1,$posts->currentPage()+1 ) as $num=>$link)
+            <li class="page-item"><a class="page-link" href="/post/list/{{$link}}">{{$num}}</a></li>
+                @endforeach
+
+
+                @if($posts->currentPage() != $posts->lastPage())
+            <li class="page-item"><a class="page-link" href="/post/list/{{$posts->nextPageUrl()}}">Next</a></li>
+                    @endif
+            @if($posts->currentPage() < $posts->lastPage()-2)
+
+                    <li class="page-item"><a class="page-link" href="/post/list/?page={{$posts->lastPage()}}">Last</a></li>
+
+                @endif
+        </ul>
+    </nav>
 @endSection
