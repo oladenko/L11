@@ -24,11 +24,27 @@ class TagController
     public function store()
     {
         $data = request()->all();
+        $validator = validator()->make($data, [
+            'title' => ['required', 'min:5',],
+            'slug'  => ['required'],
+        ]);
+        $error = $validator->errors();
+        if(count($error)>0)
+        {
+            $_SESSION['data'] = $data;
+            $_SESSION['errors'] = $error->toArray();
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
 
         $tag = new Tag();
         $tag->title = $data['title'];
         $tag->slug = $data['slug'];
         $tag->save();
+        $_SESSION['message'] = [
+            'status' =>'success',
+            'text' => "Tag \"{$data['title']} \" successfully saved.",
+        ];
 
         return new RedirectResponse('/tag/list');
     }
@@ -37,11 +53,23 @@ class TagController
     {
         $tag = \App\Model\Tag::find($id);
 
-        return view('tag/formEdit', compact('tag'));
+        return view('tag/form', compact('tag'));
     }
 
     public function update($id)
     {
+        $data = request()->all();
+        $validator = validator()->make($data, [
+            'title' => ['required', 'min:5',],
+            'slug'  => ['required'],
+        ]);
+        $error = $validator->errors();
+        if(count($error)>0)
+        {
+            $_SESSION['data'] = $data;
+            $_SESSION['errors'] = $error->toArray();
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
         $tag = \App\Model\Tag::find($id);
 
         $data = request()->all();

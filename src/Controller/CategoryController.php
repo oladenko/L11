@@ -16,6 +16,7 @@ class CategoryController
 
     public function create()
     {
+       //dd($_SESSION);
         $category = new Category();
 
         return view('category/form', compact('category'));
@@ -24,11 +25,27 @@ class CategoryController
     public function store()
     {
         $data = request()->all();
+        $validator = validator()->make($data, [
+            'title' => ['required', 'min:5',],
+            'slug'  => ['required'],
+        ]);
+        $error = $validator->errors();
+            if(count($error)>0)
+        {
+            $_SESSION['data'] = $data;
+            $_SESSION['errors'] = $error->toArray();
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
+
 
         $category = new Category();
         $category->title = $data['title'];
         $category->slug = $data['slug'];
         $category->save();
+        $_SESSION['message'] = [
+            'status' =>'success',
+            'text' => "Category \"{$data['title']} \" successfully saved.",
+        ];
 
         return new RedirectResponse('/category/list');
     }
@@ -37,11 +54,23 @@ class CategoryController
     {
         $category = \App\Model\Category::find($id);
 
-        return view('category/formEdit', compact('category'));
+        return view('category/form', compact('category'));
     }
 
     public function update($id)
     {
+        $data = request()->all();
+        $validator = validator()->make($data, [
+            'title' => ['required', 'min:5',],
+            'slug'  => ['required'],
+        ]);
+        $error = $validator->errors();
+        if(count($error)>0)
+        {
+            $_SESSION['data'] = $data;
+            $_SESSION['errors'] = $error->toArray();
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+        }
         $category = \App\Model\Category::find($id);
 
         $data = request()->all();

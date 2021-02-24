@@ -40,3 +40,16 @@ $router->get('/tag/{id}/edit', '\App\Controller\TagController@edit');
 $router->post('/tag/{id}/edit', '\App\Controller\TagController@update');
 
 $router->get('/tag/{id}/destroy', '\App\Controller\TagController@destroy');
+
+//Post
+
+
+$router->get('/post/list', '\App\Controller\PostController@index');
+
+$router->get('/post/create', '\App\Controller\PostController@create');
+$router->post('/post/create', '\App\Controller\PostController@store');
+
+$router->get('/post/{id}/edit', '\App\Controller\PostController@edit');
+$router->post('/post/{id}/edit', '\App\Controller\PostController@update');
+
+$router->get('/post/{id}/destroy', '\App\Controller\PostController@destroy');

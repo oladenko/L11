@@ -3,6 +3,12 @@
 @section('content')
 
     <a href="/category/create" type="button" class="btn btn-primary">Add category</a>
+    @if(isset($_SESSION['message']))
+        <div class="alert alert-{{$_SESSION['message']['status']}}" role="alert">
+            {{$_SESSION['message']['text']}}
+        </div>
+        @unset($_SESSION['message'])
+        @endif
     <table class="table">
         <thead>
         <tr>

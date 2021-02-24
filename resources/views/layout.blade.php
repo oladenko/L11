@@ -1,3 +1,7 @@
+<?php ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +23,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/category/list">Category</a>
                     <a class="nav-link active" aria-current="page" href="/tag/list">Tag</a>
+                    <a class="nav-link active" aria-current="page" href="/post/list">Post</a>
 
                 </li>
             </ul>
