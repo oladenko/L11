@@ -52,7 +52,7 @@
         @endif
         @foreach($tags as $tag)
             <div class="form-check">
-                <input class="form-check-input"  @if(isset($_SESSION['data']) && in_array($tag->id, $_SESSION['data']['tags'])) checked @endif type="checkbox" value="{{$tag->id}}" id="tags"
+                <input class="form-check-input" @if(isset($_SESSION['data']) && in_array($tag->id, $_SESSION['data']['tags'])) checked @endif type="checkbox" value="{{$tag->id}}" id="tags"
                        name="tags[]">
                 <label class="form-check-label" for="tags">
                     {{$tag->title}}
@@ -71,24 +71,31 @@
                     <div class="alert alert-danger" role="alert">
                         <p>{{$error}}</p>
                     </div>
+                @endforeach
+            @endif
         </div>
 
-        @endforeach
-        @endif
+
 
         {{--            <label for="category" class="form-label">Category</label>--}}
         {{--            <input type="text" class="form-control" id="category" name="category" value=" {{$_SESSION['data']['slug'] ?? $post->category}}">--}}
         {{--        </div>--}}
+
         <label for="category" class="form-label">Category</label>
         <select id="category" name="category_id" class="form-select" aria-label="Default select example">
             <option selected>Choose category</option>
+
             @foreach($categories as $category)
-                <option @if($category->id == $post->category_id) selected
-                        @endif value="{{$category->id}}">{{$category->title}}</option>
+                <option @if(isset($_SESSION['data']) && $_SESSION['data']['category_id'] == $category->id) selected @endif value="{{$category->id}}">{{$category->title}}</option>
             @endforeach
+
         </select>
         <div class="mb-3">
             <input type="submit" class="btn btn-primary mb-3" value="Save"/>
         </div>
     </form>
+    @php
+        unset($_SESSION['errors']);
+        unset($_SESSION['data']);
+    @endphp
 @endSection

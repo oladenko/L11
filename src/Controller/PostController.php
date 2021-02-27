@@ -35,7 +35,7 @@ class PostController
             'title'    => ['required', 'min:5',],
             'slug'     => ['required'],
             'body'     => ['required'],
-            'category_id' => ['required', 'exists:categories,id'],
+            'category' => ['required', 'exists:categories,id'],
             'tags'     => ['required', 'exists:tags,id'],
 
         ]);
@@ -45,13 +45,12 @@ class PostController
             $_SESSION['errors'] = $error->toArray();
             return new RedirectResponse($_SERVER['HTTP_REFERER']);
         }
-
         $post = new Post();
         $post->title = $data['title'];
         $post->slug = $data['slug'];
         $post->body = $data['body'];
 //        $post->tag = $data['tag'];
-        $post->category_id = $data['category_id'];
+        $post->category_id = $data['category'];
         $post->save();
         $post->tags()->attach($data['tags']);
 
@@ -80,9 +79,9 @@ class PostController
         $validator = validator()->make($data, [
             'title' => ['required', 'min:5',],
             'slug'  => ['required'],
-//            'body'  => ['required'],
-//            'tag'  => ['required'],
-//            'categories'  => ['required'],
+            'body'  => ['required'],
+            'tags'  => ['required'],
+            'category_id'  => ['required'],
         ]);
 
         $error = $validator->errors();

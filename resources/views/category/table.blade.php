@@ -49,11 +49,19 @@
                 <li class="page-item"><a class="page-link" href="/post/list/{{$categories->previousPageUrl()}}">Previous</a></li>
             @endif
             {{--            @if($categories->currentPage() == 1 )--}}
+                @if($categories->currentPage() >1)
 
             @foreach($categories->getUrlRange($categories->currentPage()-1, $categories->currentPage()+1) as $num=>$link)
                 <li class="page-item"><a class="page-link" href="/post/list/{{$link}}">{{$num}}</a></li>
 
             @endforeach
+                @endif  @if($categories->currentPage() == 1)
+
+            @foreach($categories->getUrlRange($categories->currentPage(), $categories->currentPage()+2) as $num=>$link)
+                <li class="page-item"><a class="page-link" href="/post/list/{{$link}}">{{$num}}</a></li>
+
+            @endforeach
+                @endif
 
             @if($categories->currentPage() != $categories->lastPage())
                 <li class="page-item"><a class="page-link" href="/post/list/{{$categories->nextPageUrl()}}">Next</a></li>

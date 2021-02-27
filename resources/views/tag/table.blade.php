@@ -49,11 +49,19 @@
                 <li class="page-item"><a class="page-link" href="/post/list/{{$tags->previousPageUrl()}}">Previous</a></li>
             @endif
             {{--            @if($tags->currentPage() == 1 )--}}
+                @if($tags->currentPage() == 1)
+
+            @foreach($tags->getUrlRange($tags->currentPage(), $tags->currentPage()+2) as $num=>$link)
+                <li class="page-item"><a class="page-link" href="/post/list/{{$link}}">{{$num}}</a></li>
+
+            @endforeach
+                @endif    @if($tags->currentPage() > 1)
 
             @foreach($tags->getUrlRange($tags->currentPage()-1, $tags->currentPage()+1) as $num=>$link)
                 <li class="page-item"><a class="page-link" href="/post/list/{{$link}}">{{$num}}</a></li>
 
             @endforeach
+                @endif
 
             @if($tags->currentPage() != $tags->lastPage())
                 <li class="page-item"><a class="page-link" href="/post/list/{{$tags->nextPageUrl()}}">Next</a></li>
